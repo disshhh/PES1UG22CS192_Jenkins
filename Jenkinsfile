@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'g++ -o output YOUR_SRN.cpp'
+                    sh 'g++ -o output PES1UG22CS192.cpp'
                 }
             }
         }
