@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'g++ -o output PES1UG22CS192.cpp'
+                    sh 'g++ -o output PES1UG22CS192.cpp && exit 1' // Compilation fails intentionally
                 }
             }
         }
@@ -13,7 +13,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh './output'
+                    sh './output' // Will not run if build fails
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
 
     post {
         failure {
-            echo 'Pipeline Failed ❌'
+            echo '❌ Pipeline Failed ❌'
         }
     }
 }
